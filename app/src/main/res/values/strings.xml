@@ -1,0 +1,173 @@
+<resources>
+    <string name="app_name">AJARING</string>
+    <string name="title_home">Home</string>
+    <string name="title_booking">Booking</string>
+    <string name="title_my_booking">My Booking</string>
+    <string name="title_my_favorite">My Favorite</string>
+    <string name="title_more">More</string>
+    <string name="title_review">Review</string>
+    <string name="title_confirmation">Confirmation</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_upload_document">Upload Your Documents</string>
+    <string name="title_about_us">About Us</string>
+    <string name="title_contact_us">Contact Us</string>
+    <string name="title_faq">FAQ</string>
+    <string name="title_term_condition">Term \u0026 Conditions</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_landing">LandingActivity</string>
+    <!--
+        Languages
+    -->
+    <string name="language">Language</string>
+    <string name="english">English</string>
+    <string name="arabic">عربي</string>
+
+
+    <string name="action_settings">Settings</string>
+    <string name="action_save">Save</string>
+    <string name="action_send">Send</string>
+    <string name="action_search">Search</string>
+    <string name="action_upload_document">Upload Documents</string>
+    <string name="action_book_now">Book Now</string>
+    <string name="action_change_password">Change Password</string>
+    <string name="action_logout">Logout</string>
+
+    <!--
+     Hint Text
+     -->
+    <string name="hint_email_id">Email id</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_pickup_loc">Pickup Location</string>
+    <string name="hint_drop_loc">Drop Location</string>
+    <string name="hint_pickup_date">Pickup Date</string>
+    <string name="hint_pickup_time">Pickup Time</string>
+    <string name="hint_pickup_date_time">Pickup Date \u0026 Time</string>
+    <string name="hint_drop_date">Drop Date</string>
+    <string name="hint_drop_time">Drop Time</string>
+    <string name="hint_drop_date_time">Drop Date \u0026 Time</string>
+    <string name="hint_forgot_password">Forgot Password ?</string>
+    <string name="hint_reset_password">Reset Password</string>
+    <string name="hint_forgot_password1">\u003F</string>
+    <string name="hint_full_name">Full Name</string>
+    <string name="hint_mobile_number">Mobile Number</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="hint_new_password">New Password</string>
+    <string name="hint_old_password">Old Password</string>
+    <string name="hint_your_message">Your Message</string>
+
+
+    <string-array name="custom_weekdays">
+        <item>M</item>
+        <item>T</item>
+        <item>W</item>
+        <item>T</item>
+        <item>F</item>
+        <item>S</item>
+        <item>S</item>
+    </string-array>
+
+    <!--
+        Set text
+    -->
+
+    <string name="log_in">Log In</string>
+    <string name="registration">Sign In</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="forgot_password_ques">Forgot Password ?</string>
+    <string name="forgot_text">Please enter your login email address below and we\u0027ll send you a link to create a
+        new password right away.
+    </string>
+    <string name="new_account">New Account ?</string>
+    <string name="already_login">Already account ? Login</string>
+    <string name="change_language">Change Language</string>
+    <string name="choose_language">Choose Language</string>
+    <string name="description">Description</string>
+
+    <string name="large_descriptions">
+        "A car (or automobile) is a wheeled motor vehicle used for transportation.\n"
+        "Most definitions of car say they run primarily on roads, seat one to eight people, have"
+        "four tires, and mainly transport people rather than goods."
+        "replaced animal drawn carriages and carts, but took much longer to be accepted in"
+        "Western Europe and other parts of the world.\n"
+    </string>
+
+
+    <!--
+        Validation text
+    -->
+    <string name="please_enter_full_name">Please enter full name.</string>
+    <string name="full_name_should_be_greater_than_3_characters">Full name should be greater than 3 characters.</string>
+    <string name="please_enter_email_id">Please enter email id.</string>
+    <string name="please_enter_a_valid_email_id">Please enter a valid email id.</string>
+    <string name="please_enter_mobile_number">Please enter mobile number.</string>
+    <string name="please_enter_valid_mobile_number">Please enter valid mobile number.</string>
+    <string name="please_enter_password">Please enter password.</string>
+    <string name="password_cannot_be_less_than_6_characters">Password cannot be less than 6 characters.</string>
+    <string name="password_and_confirm_password_should_be_same">Password and confirm password should be same.</string>
+    <string name="wrong_mobile_number_and_password">Wrong Mobile Number and password.</string>
+    <string name="enter_city_or_address">Enter City or Address</string>
+    <string name="offers">OFFERS</string>
+    <string name="where">Where</string>
+    <string name="enter_location">Enter Location</string>
+    <string name="enter_date">Enter Date</string>
+    <string name="date_and_time">Date and Time</string>
+    <string name="search">Search</string>
+    <string name="please_enter_date_time">Please enter date /u0026 time.</string>
+    <string name="please_enter_location">Please enter location.</string>
+    <string name="start">START</string>
+    <string name="end">END</string>
+    <string name="done">Done</string>
+    <string name="please_select_drop_date_and_time">Please select drop date and time.</string>
+    <string name="please_select_pick_up_date_and_time">Please select pick up date and time.</string>
+    <string name="day">Day</string>
+    <string name="days">Days</string>
+    <string name="seater">Seater</string>
+    <string name="automatic">Automatic</string>
+    <string name="manual">Manual</string>
+    <string name="petrol">Petrol</string>
+    <string name="diesel">Diesel</string>
+    <string name="trip_price">Trip Price</string>
+    <string name="protection">Protection</string>
+    <string name="trip_fee">Trip Fee</string>
+    <string name="total_per_day">Total Per Day</string>
+    <string name="total_day_trip">Day Trip</string>
+    <string name="total_days_trip">Days Trip</string>
+    <string name="delivery_fee">Delivery Fee</string>
+    <string name="free">Free</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="your_booking_done_successfully">Your Booking Done successfully</string>
+    <string name="booking_id">Booking Id:</string>
+    <string name="amount_paid">Amount Paid</string>
+    <string name="cancel_ride">Cancel Ride</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="completed">Completed</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="new_password_and_confirm_password_should_be_same">New Password and Confirm password should be same.
+    </string>
+    <string name="new_password_cannot_be_less_than_6_character">New Password cannot be less than 6 character.</string>
+    <string name="please_enter_new_password">Please enter new password.</string>
+    <string name="please_enter_confirm_password">Please enter confirm password.</string>
+    <string name="upload_driving_licence">Upload driving Licence*</string>
+    <string name="please_upload_driving_licence">Please Upload driving Licence.</string>
+    <string name="upload_ID_proof">Upload ID proof*</string>
+    <string name="please_upload_ID_proof">Please Upload ID proof.</string>
+    <string name="choose_a_language">Choose a language !</string>
+    <string name="select_a_language">Select a language</string>
+    <string name="confirm_logout">Confirm Logout</string>
+    <string name="confirm_exit">Confirm Exit</string>
+    <string name="do_you_want_to_logout">Do you want to logout ?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="do_you_want_to_exit">Do you want to exit ?</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="suv">Suv</string>
+    <string name="luxury">Luxury</string>
+    <string name="sports">Sports</string>
+    <string name="sedan">Sedan</string>
+    <string name="eco">Eco</string>
+
+
+</resources>
