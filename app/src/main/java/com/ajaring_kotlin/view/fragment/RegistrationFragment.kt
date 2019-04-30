@@ -76,7 +76,6 @@ class RegistrationFragment : BaseFragment() {
     }
 
     override fun getLayoutResource(): Int {
-        /*TODO("not implemented") //To change body of created functions use File | Settings | File Templates.*/
         return R.layout.fragment_registration
     }
 

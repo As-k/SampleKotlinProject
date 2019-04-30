@@ -6,6 +6,7 @@ import com.ajaring_kotlin.ApiInterface
 import com.ajaring_kotlin.ApplicationPreferences
 import com.ajaring_kotlin.model.Login
 import com.ajaring_kotlin.model.StandardResult
+import com.ajaring_kotlin.view.fragment.LoginFragment
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import retrofit2.Call
@@ -16,17 +17,24 @@ import retrofit2.Response
  * Created by Ashish on 2/4/19.
  */
 
-class LoginPresenter(var context: Context) {
+class LoginPresenter(context: Context) {
 
-    lateinit var loginListener: LoginListener
+    var loginListener: LoginListener? = null
+    var context: Context
+
+    init {
+        this.context = context
+    }
+
+
 
     fun loginRequest(inputs: HashMap<String, String>) {
-        loginListener.onSentRequest()
+
         val apiInterface = ApiClient(context).getServiceApi()
         val standardResult: Call<StandardResult> = apiInterface.callLoginApi(inputs)
         standardResult.enqueue(object : Callback<StandardResult> {
             override fun onFailure(call: Call<StandardResult>, t: Throwable) {
-                loginListener.onFailure()
+                loginListener?.onFailure()
             }
 
             override fun onResponse(call: Call<StandardResult>, response: Response<StandardResult>) {
@@ -35,9 +43,9 @@ class LoginPresenter(var context: Context) {
                     if (jsonElement is JsonObject) {
                         val userData: Login = Gson().fromJson<Any>(jsonElement, Login::class.java) as Login
                         val preferenceStorage = ApplicationPreferences(context)
-                        preferenceStorage.setStringData("name", userData.name!!)
+                        userData.name?.let { preferenceStorage.setStringData("name", it) }
                     }
-                    loginListener.onSuccess(response.body()!!.status, response.body()!!.message, response.body()!!.data)
+                    loginListener?.onSuccess(response.body()?.status, response.body()?.message, response.body()?.data)
                 }
             }
 

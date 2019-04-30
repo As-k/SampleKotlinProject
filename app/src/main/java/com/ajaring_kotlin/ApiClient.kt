@@ -15,22 +15,26 @@ import java.util.concurrent.TimeUnit
 /**
  * Created by Ashish on 2/4/19.
  */
+class ApiClient(context: Context) {
 
-internal class ApiClient(context: Context) {
-    val BASE_URL = "http://34.197.60.238/ajaring/index.php/rest/"
-    var retrofit: Retrofit? = null
-    private var mContext: Context = context
-    lateinit var applicationPreferences: ApplicationPreferences
-    private var instance: ApiClient? = null
+    private var mContext: Context
 
-//    @Synchronized
+//    var instance: ApiClient
+
+    //    @Synchronized
 //    fun getInstance(): ApiClient {
 //        if (instance == null)
 //            instance = ApiClient()
 //        return instance as ApiClient
 //    }
+    init {
+        this.mContext = context
+    }
 
-    private fun getClient(): Retrofit {
+    val BASE_URL: String = "http://34.197.60.238/ajaring/index.php/rest/"
+    var retrofit: Retrofit? = null
+    lateinit var applicationPreferences: ApplicationPreferences
+    fun getClient(): Retrofit {
         applicationPreferences = ApplicationPreferences(mContext)
         if (retrofit == null) {
             try {
@@ -50,11 +54,11 @@ internal class ApiClient(context: Context) {
     }
 
 
-    private fun getOKClient(): OkHttpClient {
-        val DISK_CACHE_SIZE = 50 * 1024 * 1024 // 50MB
+    fun getOKClient(): OkHttpClient {
+//        val DISK_CACHE_SIZE = 50 * 1024 * 1024 // 50MB
         // Install an HTTP cache in the context cache directory.
-        val cacheDir = File(mContext.cacheDir, "http")
-        val cache = Cache(cacheDir, DISK_CACHE_SIZE.toLong())
+//        val cacheDir = File(mContext.cacheDir, "http")
+//        val cache = Cache(cacheDir, DISK_CACHE_SIZE.toLong())
 
         val httpClient = OkHttpClient.Builder()
         val interceptor = HttpLoggingInterceptor()

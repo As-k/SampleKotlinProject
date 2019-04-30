@@ -2,6 +2,7 @@ package com.ajaring_kotlin.view.fragment
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import butterknife.BindView
@@ -27,8 +28,9 @@ import retrofit2.Response
 
 class LoginFragment : BaseFragment(), LoginListener {
 
-    val TAG: String = "LoginFragment"
+    val TAG: String by lazy { "LoginFragment" }
 
+//    var loginPresenter = context?.let { LoginPresenter(it) }
 
     @Nullable
     @BindView(R.id.email_id)
@@ -66,26 +68,28 @@ class LoginFragment : BaseFragment(), LoginListener {
     }
 
     private fun login(email: String, password: String, device_type: String, device_id: String) {
-        val hashMap: HashMap<String, String> = HashMap<String, String>()
+        val hashMap: HashMap<String, String> = hashMapOf()
         hashMap.put("email", email)
         hashMap.put("password", password)
         hashMap.put("device_type", device_type)
         hashMap.put("device_id", device_id)
         hashMap.put("language", "english")
+//        loginPresenter?.loginRequest(hashMap)
         val apiInterface = ApiClient(mContext).getServiceApi()
         val standardResult: Call<StandardResult> = apiInterface.callLoginApi(hashMap)
         standardResult.enqueue(object : Callback<StandardResult> {
             override fun onFailure(call: Call<StandardResult>, t: Throwable) {
-                showToast("onFailure")
+                Log.e(TAG, "onFailure"+t.toString())
+                showToast("onFailure"+t.toString())
             }
 
             override fun onResponse(call: Call<StandardResult>, response: Response<StandardResult>) {
                 if (response.isSuccessful) {
-                    val jsonElement = response.body()!!.data
+                    val jsonElement = response.body()?.data
                     if (jsonElement is JsonObject) {
                         val userData: Login = Gson().fromJson<Any>(jsonElement, Login::class.java) as Login
                         val preferenceStorage = ApplicationPreferences(mContext)
-                        preferenceStorage.setStringData("name", userData.name!!)
+                        userData.name?.let { preferenceStorage.setStringData("name", it) }
                     }
                     showToast("Success")
                 }
@@ -100,7 +104,6 @@ class LoginFragment : BaseFragment(), LoginListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        loginPresenter!!.invoke(mContext)
     }
 
     override fun onSentRequest() {
