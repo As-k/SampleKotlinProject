@@ -30,6 +30,10 @@ class LoginFragment : BaseFragment(), LoginListener {
 
     val TAG: String by lazy { "LoginFragment" }
 
+    override fun getLayoutResource(): Int {
+        return R.layout.fragment_login
+    }
+
 //    var loginPresenter = context?.let { LoginPresenter(it) }
 
     @Nullable
@@ -89,17 +93,15 @@ class LoginFragment : BaseFragment(), LoginListener {
                     if (jsonElement is JsonObject) {
                         val userData: Login = Gson().fromJson<Any>(jsonElement, Login::class.java) as Login
                         val preferenceStorage = ApplicationPreferences(mContext)
-                        userData.name?.let { preferenceStorage.setStringData("name", it) }
+                        Log.e(TAG, userData.toString())
+                        showToast("Success")
+                        userData.name?.let { preferenceStorage.setStringData("name", userData.name) }
+                        userData.authKey?.let { preferenceStorage.setStringData("auth_key", userData.authKey) }
                     }
-                    showToast("Success")
                 }
             }
 
         })
-    }
-
-    override fun getLayoutResource(): Int {
-        return R.layout.fragment_login
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

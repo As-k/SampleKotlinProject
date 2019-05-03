@@ -8,13 +8,17 @@
     <application
             android:name=".MainApplication"
             android:allowBackup="false"
-            tools:replace="android:allowBackup"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme">
-        <activity android:name="com.ajaring_kotlin.view.activity.MainActivity">
+            android:theme="@style/AppTheme"
+            tools:replace="android:allowBackup">
+        <activity android:name=".view.activity.LandingActivity">
+        </activity>
+        <activity android:name=".view.activity.MainActivity"
+                  android:theme="@style/AppTheme.Launcher"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

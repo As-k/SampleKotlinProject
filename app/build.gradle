@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+//apply plugin: 'com.android.library'
+
 apply plugin: 'com.jakewharton.butterknife'
 
 apply plugin: 'kotlin-kapt'
@@ -12,7 +14,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.ajaring_kotlin"
-        minSdkVersion 15
+        minSdkVersion 17
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -32,7 +34,7 @@ android {
 
 configurations {
     cleanedAnnotations
-    compile.exclude group: 'org.jetbrains' , module:'annotations'
+    compile.exclude group: 'org.jetbrains', module: 'annotations'
 }
 
 dependencies {
@@ -50,11 +52,11 @@ dependencies {
     implementation "com.jakewharton:butterknife:$butterknife_version"
     kapt "com.jakewharton:butterknife-compiler:$butterknife_version"
 
-
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.16'
 
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
     implementation 'org.jetbrains:annotations-java5:15.0'
     implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
     implementation 'com.google.code.gson:gson:2.8.5'
