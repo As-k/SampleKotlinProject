@@ -10,6 +10,5 @@ import com.google.gson.JsonElement
 interface LoginListener {
     abstract fun onSentRequest()
     abstract fun onSuccess(status: Boolean?, message: String?, data: JsonElement?)
-    abstract fun onPendingVerified(status: Boolean, message: String, mobile: String, isVerified: Boolean)
-    abstract fun onFailure()
+    abstract fun onFailure(errorMsg: String)
 }

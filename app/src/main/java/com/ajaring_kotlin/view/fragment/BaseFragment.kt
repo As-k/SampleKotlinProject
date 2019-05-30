@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import butterknife.ButterKnife
-import com.ajaring_kotlin.ApplicationPreferences
-import com.ajaring_kotlin.MainApplication
+import com.ajaring_kotlin.util.ApplicationPreferences
+import com.ajaring_kotlin.util.MainApplication
 
 
 /**

@@ -1,4 +1,4 @@
-package com.ajaring_kotlin
+package com.ajaring_kotlin.util
 
 import com.ajaring_kotlin.model.StandardResult
 import retrofit2.Call

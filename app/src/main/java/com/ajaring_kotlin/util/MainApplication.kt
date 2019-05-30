@@ -1,4 +1,4 @@
-package com.ajaring_kotlin
+package com.ajaring_kotlin.util
 
 import android.app.Application
 import android.content.Context

@@ -1,29 +1,19 @@
 package com.ajaring_kotlin.view.fragment
 
 
-import android.os.Bundle
+import android.content.Intent
 import android.util.Log
-import android.view.View
 import android.widget.EditText
 import butterknife.BindView
 import butterknife.OnClick
-import com.ajaring_kotlin.ApiClient
-import com.ajaring_kotlin.ApiInterface
-import com.ajaring_kotlin.ApplicationPreferences
-
 import com.ajaring_kotlin.R
-import com.ajaring_kotlin.model.Login
-import com.ajaring_kotlin.model.StandardResult
 import com.ajaring_kotlin.presenter.LoginListener
 import com.ajaring_kotlin.presenter.LoginPresenter
-import com.google.gson.Gson
+import com.ajaring_kotlin.view.activity.LandingActivity
+import com.ajaring_kotlin.view.activity.MainActivity
 import com.google.gson.JsonElement
-import com.google.gson.JsonObject
 import org.jetbrains.annotations.Nullable
-import kotlinx.android.synthetic.main.fragment_login.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import java.lang.Error
 
 
 class LoginFragment : BaseFragment(), LoginListener {
@@ -34,7 +24,7 @@ class LoginFragment : BaseFragment(), LoginListener {
         return R.layout.fragment_login
     }
 
-//    var loginPresenter = context?.let { LoginPresenter(it) }
+    var loginPresenter = context?.let { LoginPresenter(it, this) }
 
     @Nullable
     @BindView(R.id.email_id)
@@ -49,7 +39,6 @@ class LoginFragment : BaseFragment(), LoginListener {
         val fragment = RegistrationFragment()
         replaceFragment(R.id.main_contain, fragment)
     }
-
 
     @OnClick(R.id.action_login)
     internal fun loginAction() {
@@ -78,13 +67,13 @@ class LoginFragment : BaseFragment(), LoginListener {
         hashMap.put("device_type", device_type)
         hashMap.put("device_id", device_id)
         hashMap.put("language", "english")
-//        loginPresenter?.loginRequest(hashMap)
-        val apiInterface = ApiClient(mContext).getServiceApi()
+        LoginPresenter(mContext, this).loginRequest(hashMap)
+        /*val apiInterface = ApiClient(mContext).getServiceApi()
         val standardResult: Call<StandardResult> = apiInterface.callLoginApi(hashMap)
         standardResult.enqueue(object : Callback<StandardResult> {
             override fun onFailure(call: Call<StandardResult>, t: Throwable) {
-                Log.e(TAG, "onFailure"+t.toString())
-                showToast("onFailure"+t.toString())
+                Log.e(TAG, "onFailure" + t.toString())
+                showToast("onFailure" + t.toString())
             }
 
             override fun onResponse(call: Call<StandardResult>, response: Response<StandardResult>) {
@@ -95,32 +84,28 @@ class LoginFragment : BaseFragment(), LoginListener {
                         val preferenceStorage = ApplicationPreferences(mContext)
                         Log.e(TAG, userData.toString())
                         showToast("Success")
-                        userData.name?.let { preferenceStorage.setStringData("name", userData.name) }
-                        userData.authKey?.let { preferenceStorage.setStringData("auth_key", userData.authKey) }
+                        userData.name?.let { preferenceStorage.setStringData(AppContents().NAME, userData.name) }
+                        userData.authKey?.let { preferenceStorage.setStringData(AppContents().AUTH_KEY, userData.authKey) }
                     }
                 }
             }
 
-        })
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        })*/
     }
 
     override fun onSentRequest() {
         showToast("onSentRequest")
+        Log.d(TAG, "onSentRequest")
     }
 
     override fun onSuccess(status: Boolean?, message: String?, data: JsonElement?) {
-        showToast("Success")
+        startActivity(Intent(activity, LandingActivity::class.java))
+        activity!!.finish()
     }
 
-    override fun onPendingVerified(status: Boolean, message: String, mobile: String, isVerified: Boolean) {
-    }
-
-    override fun onFailure() {
+    override fun onFailure(errorMsg: String) {
         showToast("onFailure")
+        Log.d(TAG, "onFailure: "+errorMsg)
     }
 
 

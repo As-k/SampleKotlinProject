@@ -1,7 +1,8 @@
-package com.ajaring_kotlin
+package com.ajaring_kotlin.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.ajaring_kotlin.R
 
 
 /**

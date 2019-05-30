@@ -168,6 +168,8 @@
     <string name="sports">Sports</string>
     <string name="sedan">Sedan</string>
     <string name="eco">Eco</string>
+    <string name="car_image">CarImage</string>
+    <string name="close_image">Close Image</string>
 
 
 </resources>
