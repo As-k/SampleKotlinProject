@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+>
+    <data>
+
+    </data>
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:paddingTop="@dimen/dimen_10"
+            android:paddingLeft="@dimen/dimen_10"
+            android:paddingRight="@dimen/dimen_10"
+    >
+        <ImageView
+                android:id="@+id/ivHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/close_image"/>
+
+
+        <EditText
+                android:id="@+id/search_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_location"
+                android:singleLine="true"
+                android:textSize="@dimen/text_14"
+                android:imeOptions="actionSearch"
+                android:background="@null"
+                style="@style/TextWhite"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:layout_marginRight="@dimen/dimen_10"
+                android:textColor="@color/blackColor"
+                android:padding="@dimen/dimen_5"
+                android:focusedByDefault="true"
+                tools:targetApi="o"
+                app:layout_constraintTop_toBottomOf="@id/ivHome"
+                android:inputType="text"
+                android:autofillHints="Bangalore"/>
+        <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:layout_marginRight="@dimen/dimen_10"
+                android:background="@color/blackColor"
+                app:layout_constraintTop_toBottomOf="@id/search_et"/>
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/list"
+                android:name="com.ajaring_kotlin.view.fragment.SearchPlacesFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="LinearLayoutManager"
+                android:background="@color/colorPrimary"
+                tools:context=".view.fragment.SearchPlacesFragment"
+                tools:listitem="@layout/fragment_searchplaces"
+                app:layout_constraintTop_toBottomOf="@+id/view1"
+        />
+    </android.support.constraint.ConstraintLayout>
+</layout>

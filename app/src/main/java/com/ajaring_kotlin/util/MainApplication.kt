@@ -24,7 +24,7 @@ class MainApplication : Application() {
 
     @Synchronized
     fun getInstance(): MainApplication? {
-        return mInstance
+        return mInstance?.let { mInstance }
     }
 
     fun isValidEmail(target: CharSequence): Boolean {
@@ -32,6 +32,6 @@ class MainApplication : Application() {
     }
 
     fun androidId(context: Context): String {
-         return Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
+        return Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
     }
 }

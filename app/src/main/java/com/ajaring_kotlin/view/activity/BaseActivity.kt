@@ -25,16 +25,16 @@ abstract class BaseActivity : AppCompatActivity() {
             setContentView(getLayoutResource())
             ButterKnife.bind(this)
         } catch (e : Exception){
-            e.printStackTrace();
+            e.printStackTrace()
         }
     }
 
     fun replaceFragment(id: Int, fragment: Fragment) {
-        val fragmentManager: FragmentManager = supportFragmentManager;
-        val fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(id, fragment);
-        //   fragmentTransaction.addToBackStack("");
-        fragmentTransaction.commit();
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(id, fragment)
+        //   fragmentTransaction.addToBackStack("")
+        fragmentTransaction.commit()
     }
 
     fun addFragment(id: Int, fragment: Fragment) {
@@ -51,7 +51,7 @@ abstract class BaseActivity : AppCompatActivity() {
         //  fragmentManager.popBackStack();  //it will clear all fragment from stack
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.add(id, fragment)
-        //        fragmentTransaction.addToBackStack("");
+        //        fragmentTransaction.addToBackStack("")
         fragmentTransaction.commit()
     }
 

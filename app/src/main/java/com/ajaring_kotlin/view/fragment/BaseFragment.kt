@@ -10,6 +10,7 @@ import android.widget.Toast
 import butterknife.ButterKnife
 import com.ajaring_kotlin.util.ApplicationPreferences
 import com.ajaring_kotlin.util.MainApplication
+import com.ajaring_kotlin.util.ProgressLoader
 
 
 /**
@@ -24,6 +25,7 @@ abstract class BaseFragment : Fragment() {
     lateinit var application: MainApplication
     lateinit var applicationPreferences: ApplicationPreferences
     lateinit var mContext: Context
+    lateinit var progressBar: ProgressLoader
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -39,6 +41,7 @@ abstract class BaseFragment : Fragment() {
         view = inflater.inflate(getLayoutResource(), container, false)
         ButterKnife.bind(this, view)
         applicationPreferences = ApplicationPreferences(mContext)
+        progressBar = ProgressLoader(mContext)
         return view
     }
 

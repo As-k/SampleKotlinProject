@@ -1,6 +1,7 @@
 package com.ajaring_kotlin.util
 
 import com.ajaring_kotlin.model.StandardResult
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FieldMap
@@ -16,7 +17,15 @@ interface ApiInterface {
 
     @FormUrlEncoded
     @POST("login")
-    fun callLoginApi(
-        @FieldMap() inputs: HashMap<String, String>
-    ): Call<StandardResult>
+    fun callLoginApi(@FieldMap() inputs: HashMap<String, String>): Call<StandardResult>
+
+    @FormUrlEncoded
+    @POST("register")
+    fun callRegisterApi(@FieldMap() inputs: HashMap<String, String>): Call<StandardResult>
+
+    @FormUrlEncoded
+    @POST("search_cars")
+    fun callSearchCars(@FieldMap() inputs: HashMap<String, String>): Call<StandardResult>
+
+
 }

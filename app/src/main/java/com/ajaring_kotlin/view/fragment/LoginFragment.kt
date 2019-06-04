@@ -4,16 +4,16 @@ package com.ajaring_kotlin.view.fragment
 import android.content.Intent
 import android.util.Log
 import android.widget.EditText
+import android.widget.Toast
 import butterknife.BindView
 import butterknife.OnClick
 import com.ajaring_kotlin.R
 import com.ajaring_kotlin.presenter.LoginListener
 import com.ajaring_kotlin.presenter.LoginPresenter
+import com.ajaring_kotlin.util.Utils
 import com.ajaring_kotlin.view.activity.LandingActivity
-import com.ajaring_kotlin.view.activity.MainActivity
 import com.google.gson.JsonElement
 import org.jetbrains.annotations.Nullable
-import java.lang.Error
 
 
 class LoginFragment : BaseFragment(), LoginListener {
@@ -30,19 +30,21 @@ class LoginFragment : BaseFragment(), LoginListener {
     @BindView(R.id.email_id)
     lateinit var emailIdText: EditText
 
+    lateinit var toast: Toast
+
     @Nullable
     @BindView(R.id.password)
     lateinit var passwordText: EditText
 
     @OnClick(R.id.new_registration_action)
     internal fun newRegistrationAction() {
-        val fragment = RegistrationFragment()
-        replaceFragment(R.id.main_contain, fragment)
+
+        replaceFragment(R.id.main_contain, RegistrationFragment().newInstace())
     }
 
     @OnClick(R.id.action_login)
     internal fun loginAction() {
-        val emailId = emailIdText.getText().toString()
+        val emailId = emailIdText.text
         if (emailId.length == 0) {
             showToast(resources.getString(R.string.please_enter_email_id))
         } else if (emailId.length != 0 && !application.isValidEmail(emailId)) {
@@ -67,7 +69,10 @@ class LoginFragment : BaseFragment(), LoginListener {
         hashMap.put("device_type", device_type)
         hashMap.put("device_id", device_id)
         hashMap.put("language", "english")
-        LoginPresenter(mContext, this).loginRequest(hashMap)
+        if (Utils.isNetworkAvailable(mContext))
+            LoginPresenter(mContext, this).loginRequest(hashMap)
+        else
+            showToast("No Internet Connection!")
         /*val apiInterface = ApiClient(mContext).getServiceApi()
         val standardResult: Call<StandardResult> = apiInterface.callLoginApi(hashMap)
         standardResult.enqueue(object : Callback<StandardResult> {
@@ -94,18 +99,23 @@ class LoginFragment : BaseFragment(), LoginListener {
     }
 
     override fun onSentRequest() {
-        showToast("onSentRequest")
+        progressBar.showProgress()
         Log.d(TAG, "onSentRequest")
     }
 
     override fun onSuccess(status: Boolean?, message: String?, data: JsonElement?) {
+        progressBar.dismissProgress()
         startActivity(Intent(activity, LandingActivity::class.java))
         activity!!.finish()
     }
 
     override fun onFailure(errorMsg: String) {
-        showToast("onFailure")
-        Log.d(TAG, "onFailure: "+errorMsg)
+        Log.d(TAG, "onFailure: " + errorMsg)
+
+    }
+
+    internal fun toast() {
+        showToast("HI")
     }
 
 
